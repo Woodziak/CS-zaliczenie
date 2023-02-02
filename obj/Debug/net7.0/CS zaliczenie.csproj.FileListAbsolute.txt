@@ -1,0 +1,15 @@
+C:\Users\Woodziak\Desktop\CS zaliczenie\bin\Debug\net7.0\CS zaliczenie.exe
+C:\Users\Woodziak\Desktop\CS zaliczenie\bin\Debug\net7.0\CS zaliczenie.deps.json
+C:\Users\Woodziak\Desktop\CS zaliczenie\bin\Debug\net7.0\CS zaliczenie.runtimeconfig.json
+C:\Users\Woodziak\Desktop\CS zaliczenie\bin\Debug\net7.0\CS zaliczenie.dll
+C:\Users\Woodziak\Desktop\CS zaliczenie\bin\Debug\net7.0\CS zaliczenie.pdb
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.csproj.AssemblyReference.cache
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.AssemblyInfoInputs.cache
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.AssemblyInfo.cs
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.csproj.CoreCompileInputs.cache
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.dll
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\refint\CS zaliczenie.dll
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.pdb
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\CS zaliczenie.genruntimeconfig.cache
+C:\Users\Woodziak\Desktop\CS zaliczenie\obj\Debug\net7.0\ref\CS zaliczenie.dll
