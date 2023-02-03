@@ -4,10 +4,17 @@ namespace Library
     {
         //vars
         private string name="";
-        public List<Book> Books= new List<Book>();
+        private string description="";
+        public Category( string name)
+        {
+            this.name=name;
 
-        
-
+        }
+        public Category( string name, string description)
+        {
+            this.name=name;
+            this.description=description;
+        }
         //get/set methods
         public string Name
         {

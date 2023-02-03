@@ -3,7 +3,17 @@ namespace Library
     public class Catalogue
     {
         private string name="";
-        public List<Category> Category= new List<Category>();
+        public Catalogue(string name)
+        {
+            this.name=name;
+
+        }
+
+        public void ViewCatalogue()
+        {
+
+
+        }
         public string Name
         {
             get { return name; }
