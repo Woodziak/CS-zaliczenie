@@ -224,13 +224,13 @@ namespace Library
         public int ViewBooks()
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Category");                               
+            Console.WriteLine("No           Title           Author          ISBN            Category       Serial Number");                               
             if (Program.BooksList.Count!=0)
             {
                 int number=1;
                 foreach(var Book in Program.BooksList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}", number, Book.Title, Book.Author, Book.Isbn, Book.Category);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Book.Title, Book.Author, Book.Isbn, Book.Category, Book.SerialNumber);
                     number++;
                 }
             }
@@ -244,13 +244,13 @@ namespace Library
         public int ViewDictionaries()
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Type");   
+            Console.WriteLine("No           Title           Author          ISBN            Type       Serial Number");   
             if (Program.DictionariesList.Count!=0)
             {
                 int number=1;
                 foreach(var Dictionary in Program.DictionariesList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Dictionary.Title, Dictionary.Author, Dictionary.Isbn, Dictionary.Category, Dictionary.Type);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Dictionary.Title, Dictionary.Author, Dictionary.Isbn, Dictionary.Category, Dictionary.Type, Dictionary.SerialNumber);
                     number++;
                 }
             }
@@ -263,13 +263,13 @@ namespace Library
         public int ViewEncyclopedias()
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Topic");   
+            Console.WriteLine("No           Title           Author          ISBN            Topic      Serial Number");   
             if (Program.EncyclopediasList.Count!=0)
             {
                 int number=1;
                 foreach(var Encyclopedia in Program.EncyclopediasList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Encyclopedia.Title, Encyclopedia.Author, Encyclopedia.Isbn, Encyclopedia.Category, Encyclopedia.Topic);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Encyclopedia.Title, Encyclopedia.Author, Encyclopedia.Isbn, Encyclopedia.Category, Encyclopedia.Topic, Encyclopedia.SerialNumber);
                     number++;
                 }
             }
@@ -282,13 +282,13 @@ namespace Library
         public int ViewManuals()
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Device");   
+            Console.WriteLine("No           Title           Author          ISBN            Device      Serial Number");   
             if (Program.ManualsList.Count!=0)
             {
                 int number=1;
                 foreach(var Manual in Program.ManualsList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Manual.Title, Manual.Author, Manual.Isbn, Manual.Category, Manual.Device);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Manual.Title, Manual.Author, Manual.Isbn, Manual.Category, Manual.Device, Manual.SerialNumber);
                     number++;
                 }
             }
@@ -301,13 +301,13 @@ namespace Library
         public int ViewTextbooks()
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Classes");   
+            Console.WriteLine("No           Title           Author          ISBN            Classes        Serial Number");   
             if (Program.TextbooksList.Count!=0)
             {
                 int number=1;
                 foreach(var Textbook in Program.TextbooksList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Textbook.Title, Textbook.Author, Textbook.Isbn, Textbook.Category, Textbook.Classes);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Textbook.Title, Textbook.Author, Textbook.Isbn, Textbook.Category, Textbook.Classes, Textbook.SerialNumber);
                     number++;
                 }
             }
@@ -487,7 +487,8 @@ namespace Library
 
                 }
             }        
-
+            if(number==1)
+                Console.WriteLine("The is no book in specified category");
         }
         public void DeleteCategory(string name)
         {
@@ -502,6 +503,7 @@ namespace Library
                 Program.EncyclopediasList.RemoveAll(EncyclopediasList=>EncyclopediasList.Category==name);
                 Program.ManualsList.RemoveAll(ManualsList=>ManualsList.Category==name);
                 Program.TextbooksList.RemoveAll(TexbooksList=>TexbooksList.Category==name);
+                Program.CategoriesList.RemoveAll(CategoriesList=>CategoriesList.Name==name);
                 Console.WriteLine("Books and category deleted.\nReturning to main menu");
             }     
             else
@@ -534,6 +536,21 @@ namespace Library
         public void DisplayRents()
         {
             
+        }
+        public int RentBook()
+        {   int id=0;
+            Console.WriteLine("Please specify from which type you would like to rent a book: Book, Dictionary, Encyclopedia, Manual, Textbook");
+            string? name=Console.ReadLine();
+            if(string.IsNullOrEmpty(name))
+            {
+                name="";
+                Console.WriteLine("No input detected, returning to main menu");
+            }
+            else
+            {
+
+            }
+            return id;
         }
         public bool Exit()
         {

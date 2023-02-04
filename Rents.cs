@@ -6,7 +6,12 @@ namespace Library
         protected string lastname="";
         protected int rentedbook;
         protected int rentid;
+        protected int invoiceid;
 
+        public Rents(string firstname, string lastname, int rentedbook, int rentid)
+        {
+
+        }
         public string FirstName
         {
             get { return firstname; }

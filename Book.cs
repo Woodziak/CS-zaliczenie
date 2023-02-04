@@ -21,6 +21,14 @@ namespace Library
             Random rnd = new Random();
             this.serialnumber=rnd.Next();
         }
+        public Book(string title, string author, int ISBN, string category, int serialnumber)
+        {
+            this.title=title;
+            this.author=author;
+            this.isbn=ISBN;
+            this.category=category;
+            this.serialnumber=serialnumber;
+        }
         public Book(){}
 
         //get/set methods
@@ -65,7 +73,17 @@ namespace Library
             this.isbn=ISBN;
             this.category=category;
             this.type=type;
-            
+            Random rnd = new Random();
+            this.serialnumber=rnd.Next();            
+        }
+        public Dictionary(string title, string author, int ISBN, string category, string type, int serialnumber)
+        {
+            this.title=title;
+            this.author=author;
+            this.isbn=ISBN;
+            this.category=category;
+            this.type=type;
+            this.serialnumber=serialnumber;            
         }
         public string Type
         {
@@ -83,7 +101,17 @@ namespace Library
             this.isbn=ISBN;
             this.category=category;
             this.topic=topic;
-            
+            Random rnd = new Random();
+            this.serialnumber=rnd.Next();
+        }
+        public Encyclopedia(string title, string author, int ISBN, string category, string topic, int serialnumber)
+        {
+            this.title=title;
+            this.author=author;
+            this.isbn=ISBN;
+            this.category=category;
+            this.topic=topic;
+            this.serialnumber=serialnumber;
         }
         public string Topic
         {
@@ -101,9 +129,18 @@ namespace Library
             this.isbn=ISBN;
             this.category=category;
             this.device=device;
-            
+            Random rnd = new Random();
+            this.serialnumber=rnd.Next();            
         }
-        
+        public Manual(string title, string author, int ISBN, string category, string device, int serialnumber)
+        {
+            this.title=title;
+            this.author=author;
+            this.isbn=ISBN;
+            this.category=category;
+            this.device=device;
+            this.serialnumber=serialnumber;            
+        }        
         public string Device
         {
             get { return device;  }
@@ -120,8 +157,18 @@ namespace Library
             this.isbn=ISBN;
             this.category=category;
             this.classes=classes;
-            
+            Random rnd = new Random();
+            this.serialnumber=rnd.Next();            
         }
+        public Textbook(string title, string author, int ISBN, string category, string classes, int serialnumber)
+        {
+            this.title=title;
+            this.author=author;
+            this.isbn=ISBN;
+            this.category=category;
+            this.classes=classes;
+            this.serialnumber=serialnumber;            
+        }        
         public string Classes
         {
             get { return classes;  }
