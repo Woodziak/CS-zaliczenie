@@ -10,7 +10,11 @@ namespace Library
 
         public Rents(string firstname, string lastname, int rentedbook, int rentid)
         {
-
+            this.firstname=firstname;
+            this.lastname=lastname;
+            this.rentedbook=rentedbook;
+            this.rentid=rentid;
+            
         }
         public string FirstName
         {
@@ -30,7 +34,7 @@ namespace Library
             set {rentedbook=value;}
 
         }
-        public int RentedID
+        public int RentID
         {
             get {return rentid;}
             set {rentid=value;}

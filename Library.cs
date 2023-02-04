@@ -12,6 +12,7 @@ namespace Library
             public static List<Manual> ManualsList = new List<Manual>();
             public static List<Textbook> TextbooksList = new List<Textbook>();        
             public static List<Rents> RentsList = new List<Rents>();
+            public static List<Invoice> InvoicesList = new List<Invoice>();
         private static void Main(string[] args)
         {
             bool run=true;
@@ -32,7 +33,7 @@ namespace Library
                     switch(myApp.DisplayBooksTab())
                         {
                             case 1:
-                                myApp.ViewAllBooks();
+                                myApp.ViewAllBooks(false);
                                 break;
                             case 2:
                                 myApp.AddNewBook();
@@ -122,7 +123,32 @@ namespace Library
                     }
                     break;
                 case 4:
-                    myApp.DisplayRentalTab();
+                    switch(myApp.DisplayRentalTab())
+                    {
+                        case 1:
+                            myApp.DisplayRents();
+                            break;
+                        case 2:
+                            string? fn;
+                            string? ln;
+                            (int, int) id=(0,0);
+                            Console.Write("Please input your first name: ");
+                            fn=Console.ReadLine();
+                            if(string.IsNullOrEmpty(fn))
+                                fn="John";
+                            Console.Write("Please input last name: ");
+                            ln=Console.ReadLine();
+                            if(string.IsNullOrEmpty(ln))
+                                ln="Doe";
+                            id=myApp.RentBook();
+
+                            RentsList.Add(new Rents(fn, ln, id.Item2 ,id.Item1));
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 5:
                     Console.WriteLine("Invoices are going to be implemented soon...");

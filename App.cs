@@ -221,18 +221,48 @@ namespace Library
             }
             Thread.Sleep(1000);
         }
-        public int ViewBooks()
+        public int ViewBooks(bool rented)
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Category       Serial Number");                               
+            Console.WriteLine("No           Title           Author          ISBN            Category       Serial Number       Status");                               
             if (Program.BooksList.Count!=0)
             {
                 int number=1;
-                foreach(var Book in Program.BooksList)
+                if (!rented)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Book.Title, Book.Author, Book.Isbn, Book.Category, Book.SerialNumber);
-                    number++;
+                    foreach(var Book in Program.BooksList)
+                    {
+                        Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", 
+                        number, 
+                        Book.Title, 
+                        Book.Author, 
+                        Book.Isbn, 
+                        Book.Category, 
+                        Book.SerialNumber,
+                        Book.Status);
+                        number++;
+                    }
                 }
+                else
+                {
+                    foreach(var Book in Program.BooksList)
+                    {
+                        if(Book.Status=="RENTED")
+                        {
+                            Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5},", 
+                            number, 
+                            Book.Title, 
+                            Book.Author, 
+                            Book.Isbn, 
+                            Book.Category, 
+                            Book.SerialNumber,
+                            Book.Status);
+                            number++;
+                        }
+                    }
+
+                }
+
             }
             else
                 Console.WriteLine("No Books in your Library store");
@@ -241,17 +271,43 @@ namespace Library
             return Program.BooksList.Count;
 
         }
-        public int ViewDictionaries()
+        public int ViewDictionaries(bool rented)
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Type       Serial Number");   
+            Console.WriteLine("No           Title           Author          ISBN            Type       Serial Number       Status");   
             if (Program.DictionariesList.Count!=0)
             {
                 int number=1;
                 foreach(var Dictionary in Program.DictionariesList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Dictionary.Title, Dictionary.Author, Dictionary.Isbn, Dictionary.Category, Dictionary.Type, Dictionary.SerialNumber);
-                    number++;
+                    if(!rented)
+                    {
+                        Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                        number, 
+                        Dictionary.Title, 
+                        Dictionary.Author, 
+                        Dictionary.Isbn, 
+                        Dictionary.Category, 
+                        Dictionary.Type, 
+                        Dictionary.SerialNumber, 
+                        Dictionary.Status);
+                        number++;
+                    }
+                    else
+                    {
+                        if(Dictionary.Status=="RENTED")
+                        {   Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                            number, 
+                            Dictionary.Title, 
+                            Dictionary.Author, 
+                            Dictionary.Isbn, 
+                            Dictionary.Category, 
+                            Dictionary.Type, 
+                            Dictionary.SerialNumber, 
+                            Dictionary.Status);
+                            number++;                       
+                        }
+                    }
                 }
             }
             else
@@ -260,17 +316,44 @@ namespace Library
             Console.ReadLine();
             return Program.BooksList.Count;
         }
-        public int ViewEncyclopedias()
+        public int ViewEncyclopedias(bool rented)
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Topic      Serial Number");   
+            Console.WriteLine("No           Title           Author          ISBN            Topic      Serial Number       Status");   
             if (Program.EncyclopediasList.Count!=0)
             {
                 int number=1;
                 foreach(var Encyclopedia in Program.EncyclopediasList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Encyclopedia.Title, Encyclopedia.Author, Encyclopedia.Isbn, Encyclopedia.Category, Encyclopedia.Topic, Encyclopedia.SerialNumber);
-                    number++;
+                    if(!rented)
+                    {
+                        Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                        number, 
+                        Encyclopedia.Title, 
+                        Encyclopedia.Author, 
+                        Encyclopedia.Isbn, 
+                        Encyclopedia.Category, 
+                        Encyclopedia.Topic, 
+                        Encyclopedia.SerialNumber,
+                        Encyclopedia.Status);
+                        number++;
+                    }
+                    else
+                    {
+                        if(Encyclopedia.Status=="RENTED")
+                        {
+                            Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                            number, 
+                            Encyclopedia.Title, 
+                            Encyclopedia.Author, 
+                            Encyclopedia.Isbn, 
+                            Encyclopedia.Category, 
+                            Encyclopedia.Topic, 
+                            Encyclopedia.SerialNumber,
+                            Encyclopedia.Status);
+                            number++;        
+                        }                
+                    }
                 }
             }
             else
@@ -279,17 +362,44 @@ namespace Library
             Console.ReadLine();
             return Program.BooksList.Count;
         }
-        public int ViewManuals()
+        public int ViewManuals(bool rented)
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Device      Serial Number");   
+            Console.WriteLine("No           Title           Author          ISBN            Device      Serial Number       Status");   
             if (Program.ManualsList.Count!=0)
             {
                 int number=1;
                 foreach(var Manual in Program.ManualsList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Manual.Title, Manual.Author, Manual.Isbn, Manual.Category, Manual.Device, Manual.SerialNumber);
-                    number++;
+                    if(!rented)
+                    {
+                        Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                        number, 
+                        Manual.Title, 
+                        Manual.Author, 
+                        Manual.Isbn, 
+                        Manual.Category, 
+                        Manual.Device, 
+                        Manual.SerialNumber,
+                        Manual.Status);
+                        number++;
+                    }
+                    else
+                    {
+                        if(Manual.Status=="RENTED")
+                        {
+                            Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                            number, 
+                            Manual.Title, 
+                            Manual.Author, 
+                            Manual.Isbn, 
+                            Manual.Category, 
+                            Manual.Device, 
+                            Manual.SerialNumber,
+                            Manual.Status);
+                            number++;   
+                        }                     
+                    }
                 }
             }
             else
@@ -298,17 +408,44 @@ namespace Library
             Console.ReadLine();
             return Program.BooksList.Count;
         }
-        public int ViewTextbooks()
+        public int ViewTextbooks(bool rented)
         {
             Console.Clear();
-            Console.WriteLine("No           Title           Author          ISBN            Classes        Serial Number");   
+            Console.WriteLine("No           Title           Author          ISBN            Classes        Serial Number        Status");   
             if (Program.TextbooksList.Count!=0)
             {
                 int number=1;
                 foreach(var Textbook in Program.TextbooksList)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Textbook.Title, Textbook.Author, Textbook.Isbn, Textbook.Category, Textbook.Classes, Textbook.SerialNumber);
-                    number++;
+                    if(!rented)
+                    {
+                        Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                        number, 
+                        Textbook.Title, 
+                        Textbook.Author, 
+                        Textbook.Isbn, 
+                        Textbook.Category, 
+                        Textbook.Classes, 
+                        Textbook.SerialNumber,
+                        Textbook.Status);
+                        number++;
+                    }
+                    else
+                    {
+                        if(Textbook.Status=="RENTED")
+                        {
+                            Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}, {7}", 
+                            number, 
+                            Textbook.Title, 
+                            Textbook.Author, 
+                            Textbook.Isbn, 
+                            Textbook.Category, 
+                            Textbook.Classes, 
+                            Textbook.SerialNumber,
+                            Textbook.Status);
+                            number++;                            
+                        }
+                    }
                 }
             }
             else
@@ -317,9 +454,12 @@ namespace Library
             Console.ReadLine();
             return Program.BooksList.Count;
         }
-        public int ViewAllBooks()
+        public int ViewAllBooks(bool rented)
         {   
-            return ViewBooks()+ViewDictionaries()+ViewEncyclopedias()+ViewManuals()+ViewTextbooks();
+            if (rented)
+                return ViewBooks(true)+ViewDictionaries(true)+ViewEncyclopedias(true)+ViewManuals(true)+ViewTextbooks(true);
+            else
+                return ViewBooks(false)+ViewDictionaries(false)+ViewEncyclopedias(false)+ViewManuals(false)+ViewTextbooks(false);
         }
         public void DeleteIndexFromList(List<Book> BL)
         {
@@ -410,26 +550,26 @@ namespace Library
             switch(InputVerification())
             {
                 case 1:
-                    if (ViewBooks()>0)
+                    if (ViewBooks(false)>0)
                         DeleteIndexFromList(Program.BooksList);
                     else
                         Console.WriteLine("Cannot delete, this collection has no books! Press Enter to return to main menu");
                     Console.ReadLine();
                     break;
                 case 2:
-                    ViewDictionaries();
+                    ViewDictionaries(false);
                     DeleteIndexFromList(Program.DictionariesList);
                     break;
                 case 3:
-                    ViewEncyclopedias();
+                    ViewEncyclopedias(false);
                     DeleteIndexFromList(Program.EncyclopediasList);
                     break;
                 case 4:
-                    ViewManuals();
+                    ViewManuals(false);
                     DeleteIndexFromList(Program.ManualsList);
                     break;
                 case 5:
-                    ViewTextbooks();
+                    ViewTextbooks(false);
                     DeleteIndexFromList(Program.TextbooksList);
                     break;
                 default: 
@@ -446,7 +586,7 @@ namespace Library
             {
                 if (Book.Category==name)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}", number, Book.Title, Book.Author, Book.Isbn, Book.Category);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}. {5}", number, Book.Title, Book.Author, Book.Isbn, Book.Category, Book.SerialNumber);
                     number++;
 
                 }
@@ -455,7 +595,7 @@ namespace Library
             {
                 if (Dictionary.Category==name)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Dictionary.Title, Dictionary.Author, Dictionary.Isbn, Dictionary.Category, Dictionary.Type);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Dictionary.Title, Dictionary.Author, Dictionary.Isbn, Dictionary.Category, Dictionary.Type, Dictionary.SerialNumber);
                     number++;
 
                 }
@@ -464,7 +604,7 @@ namespace Library
             {
                 if (Encyclopedia.Category==name)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Encyclopedia.Title, Encyclopedia.Author, Encyclopedia.Isbn, Encyclopedia.Category, Encyclopedia.Topic);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Encyclopedia.Title, Encyclopedia.Author, Encyclopedia.Isbn, Encyclopedia.Category, Encyclopedia.Topic, Encyclopedia.SerialNumber);
                     number++;
 
                 }
@@ -473,7 +613,7 @@ namespace Library
             {
                 if (Manual.Category==name)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Manual.Title, Manual.Author, Manual.Isbn, Manual.Category, Manual.Device);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Manual.Title, Manual.Author, Manual.Isbn, Manual.Category, Manual.Device, Manual.SerialNumber);
                     number++;
 
                 }
@@ -482,7 +622,7 @@ namespace Library
             {
                 if (Textbook.Category==name)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", number, Textbook.Title, Textbook.Author, Textbook.Isbn, Textbook.Category, Textbook.Classes);
+                    Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}, {6}", number, Textbook.Title, Textbook.Author, Textbook.Isbn, Textbook.Category, Textbook.Classes, Textbook.SerialNumber);
                     number++;
 
                 }
@@ -513,7 +653,7 @@ namespace Library
         }
         public void DisplayCatalogue()
         {
-            ViewAllBooks();
+            ViewAllBooks(false);
         }
         public void DeleteCatalogue()
         {
@@ -535,10 +675,30 @@ namespace Library
         }
         public void DisplayRents()
         {
-            
+            //Console.Clear();
+            Console.WriteLine("For now, these books are rented");
+            ViewAllBooks(true);
+            Console.WriteLine("Who rented:");
+            Console.WriteLine("First Name   Last Name   Book S/N    Rent ID");
+            foreach(var Rent in Program.RentsList)
+            {
+                Console.WriteLine("{0}, {1}, {2}, {3}", 
+                Rent.FirstName, 
+                Rent.LastName, 
+                Rent.RentedBook, 
+                Rent.RentID);
+                
+            }
+
+            Console.WriteLine("Press enter to return to Main Menu");
+            Console.ReadLine();
+
         }
-        public int RentBook()
+        public (int,int) RentBook()
         {   int id=0;
+            int sn=0;
+            Random rnd=new Random();
+            Console.Clear();
             Console.WriteLine("Please specify from which type you would like to rent a book: Book, Dictionary, Encyclopedia, Manual, Textbook");
             string? name=Console.ReadLine();
             if(string.IsNullOrEmpty(name))
@@ -547,10 +707,145 @@ namespace Library
                 Console.WriteLine("No input detected, returning to main menu");
             }
             else
-            {
-
+            {   name=name.ToLower();
+                
+                switch(name)
+                {
+                    case "book":
+                        if (ViewBooks(false)>0)
+                        {
+                            Console.WriteLine("Please pick the serial number of the Book you would like to rent");
+                            sn=InputVerification();
+                            foreach( var Book in Program.BooksList)
+                            {
+                                if ((Book.SerialNumber==sn) && (Book.Status=="AVAILABLE"))
+                                {
+                                    Book.Status="RENTED";
+                                    Console.WriteLine("Book {0} has been rented",Book.Title);
+                                    if (Program.RentsList.Count==0)
+                                        id=1;
+                                    else
+                                    {
+                                        var Rent= Program.RentsList.Last();
+                                        id=Rent.RentID+1;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ERROR - Cannot rent that book");
+                                }
+                            }
+                        }
+                        break;
+                    case "dictionary":
+                        if (ViewDictionaries(false)>0)
+                        {                        
+                            Console.WriteLine("Please pick the serial number of the Dictionary you would like to rent");
+                            sn=InputVerification();
+                            foreach( var Dictionary in Program.DictionariesList)
+                            {
+                                if (Dictionary.SerialNumber==sn && Dictionary.Status=="AVAILABLE")
+                                {
+                                    Dictionary.Status="RENTED";
+                                    Console.WriteLine("Book {0} has been rented",Dictionary.Title);
+                                    if (Program.RentsList.Count==0)
+                                        id=1;
+                                    else
+                                    {                                    
+                                        var Rent= Program.RentsList.Last();
+                                        id=Rent.RentID+1;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ERROR - Cannot rent that book");
+                                }
+                            }
+                        }
+                        break;
+                    case "encyclopedia":
+                        if(ViewEncyclopedias(false)>0)
+                        {
+                            Console.WriteLine("Please pick the serial number of the Encyclopedia you would like to rent");
+                            sn=InputVerification();
+                            foreach( var Encyclopedia in Program.EncyclopediasList)
+                            {
+                                if (Encyclopedia.SerialNumber==sn && Encyclopedia.Status=="AVAILABLE")
+                                {
+                                    Encyclopedia.Status="RENTED";
+                                    Console.WriteLine("Book {0} has been rented",Encyclopedia.Title);
+                                    if (Program.RentsList.Count==0)
+                                        id=1;
+                                    else
+                                    {                            
+                                        var Rent= Program.RentsList.Last();
+                                        id=Rent.RentID+1;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ERROR - Cannot rent that book");
+                                }
+                            }
+                        }
+                        break;
+                    case "manual":
+                        if(ViewManuals(false)>0)
+                        {
+                            Console.WriteLine("Please pick the serial number of the Manual you would like to rent");
+                            sn=InputVerification();
+                            foreach( var Manual in Program.ManualsList)
+                            {
+                                if (Manual.SerialNumber==sn && Manual.Status=="AVAILABLE")
+                                {
+                                    Manual.Status="RENTED";
+                                    Console.WriteLine("Book {0} has been rented",Manual.Title);
+                                    if (Program.RentsList.Count==0)
+                                        id=1;
+                                    else
+                                    {                                
+                                        var Rent= Program.RentsList.Last();
+                                        id=Rent.RentID+1;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ERROR - Cannot rent that book");
+                                }
+                            }                        
+                        }
+                        break;
+                    case "textbook":
+                        if(ViewTextbooks(false)>0)
+                        {
+                            Console.WriteLine("Please pick the serial number of the Textbook you would like to rent");
+                            sn=InputVerification();
+                            foreach( var Textbook in Program.TextbooksList)
+                            {
+                                if (Textbook.SerialNumber==sn && Textbook.Status=="AVAILABLE")
+                                {
+                                    Textbook.Status="RENTED";
+                                    Console.WriteLine("Book {0} has been rented",Textbook.Title);
+                                    if (Program.RentsList.Count==0)
+                                        id=1;
+                                    else
+                                    {                                    
+                                        var Rent= Program.RentsList.Last();
+                                        id=Rent.RentID+1;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ERROR - Cannot rent that book");
+                                }
+                            }                        
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
-            return id;
+            return (id, sn);
         }
         public bool Exit()
         {

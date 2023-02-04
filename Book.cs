@@ -9,7 +9,7 @@ namespace Library
         protected int isbn=0;
         protected string category="";
         protected int serialnumber=0;
-        protected string status="available";
+        protected string status="AVAILABLE";
 
         //constructors
         public Book(string title, string author, int ISBN, string category)

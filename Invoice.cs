@@ -2,9 +2,14 @@ namespace Library
 {
     public class Invoice
     {
-        protected string FirstName="";
-        protected string LastName="";
-        protected string InvoiceType="";
+        protected string invoicetype="";
+        protected int invoiceid;
+
+        public int InvoiceID
+        {
+            get {return invoiceid; }
+            set {invoiceid=value;}
+        }
 
     }
 
