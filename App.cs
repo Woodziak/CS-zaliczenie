@@ -3,7 +3,7 @@ namespace Library
     public class App
     {
         
-        public int  InputVerification()
+        public int InputVerification()
         {   int option;
             try
             {
@@ -11,13 +11,12 @@ namespace Library
             }
             catch
             {
-                Console.WriteLine("Exception caught, prompted value is not string, too long int or not unsigned int\nWaiting for recovery");
-                Thread.Sleep(1000);
+                
+                Console.WriteLine("Returning to Main Menu");
                 option=10;
             }
             return option;
         }
-
         public int DisplayMenu()
         {
             Thread.Sleep(1500);
@@ -29,7 +28,6 @@ namespace Library
                 "3. Catalogue\n"+
                 "4. Rental service\n"+
                 "5. Invoices\n"+
-                "6. Help\n"+
                 "0. Exit"+
                 "\n\n\n\n\n"+
                 "Prompt: "          
@@ -52,7 +50,6 @@ namespace Library
             
             return InputVerification();
         }
-
         public int DisplayCategoriesTab()
         {
             
@@ -441,7 +438,6 @@ namespace Library
             
 
         }
-
         public void ViewCategory(string name)
         {
             int number=1;
@@ -492,6 +488,52 @@ namespace Library
                 }
             }        
 
+        }
+        public void DeleteCategory(string name)
+        {
+            Console.WriteLine("The category {0} and those books are going to be deleted",name);
+            ViewCategory(name);
+            Console.WriteLine("Are you sure you want to delete ALL of those entries? [y/n]");
+            bool check=(Console.ReadLine()=="y")? true : false;
+            if(check)
+            {
+                Program.BooksList.RemoveAll(BooksList=>BooksList.Category==name);
+                Program.DictionariesList.RemoveAll(DictionariesList=>DictionariesList.Category==name);
+                Program.EncyclopediasList.RemoveAll(EncyclopediasList=>EncyclopediasList.Category==name);
+                Program.ManualsList.RemoveAll(ManualsList=>ManualsList.Category==name);
+                Program.TextbooksList.RemoveAll(TexbooksList=>TexbooksList.Category==name);
+                Console.WriteLine("Books and category deleted.\nReturning to main menu");
+            }     
+            else
+                Console.WriteLine("Aborting");
+    
+
+        }
+        public void DisplayCatalogue()
+        {
+            ViewAllBooks();
+        }
+        public void DeleteCatalogue()
+        {
+            Console.Clear();
+            Console.WriteLine("WARNING\nWARNING\nWARNING\nYou are going to delete whole catalogue, are you sure? [y/n]");
+            bool check=(Console.ReadLine()=="y")? true : false;
+            if (check)
+            {
+                Program.BooksList.Clear();
+                Program.DictionariesList.Clear();
+                Program.EncyclopediasList.Clear();
+                Program.ManualsList.Clear();
+                Program.TextbooksList.Clear();
+                Program.CategoriesList.Clear();
+            }
+            else
+                Console.WriteLine("Aborting");
+
+        }
+        public void DisplayRents()
+        {
+            
         }
         public bool Exit()
         {

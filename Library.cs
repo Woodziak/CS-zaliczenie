@@ -11,6 +11,7 @@ namespace Library
             public static List<Encyclopedia> EncyclopediasList = new List<Encyclopedia>();
             public static List<Manual> ManualsList = new List<Manual>();
             public static List<Textbook> TextbooksList = new List<Textbook>();        
+            public static List<Rents> RentsList = new List<Rents>();
         private static void Main(string[] args)
         {
             bool run=true;
@@ -25,8 +26,8 @@ namespace Library
             {   
                 switch(myApp.DisplayMenu())
                 {
-                    case 1:
-                        switch(myApp.DisplayBooksTab())
+                case 1:
+                    switch(myApp.DisplayBooksTab())
                         {
                             case 1:
                                 myApp.ViewAllBooks();
@@ -42,12 +43,13 @@ namespace Library
                         }
                     break;
                 case 2:
+                    int number=1;
                     switch(myApp.DisplayCategoriesTab())
                     {
                         case 1: 
                             Console.Clear();
                             Console.WriteLine("Please put THE NAME of Category you would like to see");
-                            int number=1;
+                            
                             foreach(var Category in CategoriesList)
                             {
                                 Console.WriteLine("{0}. {1}", number,Category.Name);
@@ -63,12 +65,12 @@ namespace Library
                             Console.ReadLine();
                             break;
                         case 2:
-                            Console.WriteLine("Please put the name of Category you would like to add");
+                            Console.WriteLine("Please put name of the category you would like to add");
                             string? newcategory=Console.ReadLine();
                             if(string.IsNullOrEmpty(newcategory))
                             {
                                 category="";
-                                Console.WriteLine("Empty string dettected, no categories will be added");
+                                Console.WriteLine("Empty string dettected, no categories will be added. Press Enter to return to Menu");
                             }
                             else
                             {
@@ -78,21 +80,45 @@ namespace Library
                             Console.ReadLine();
                             break;
                         case 3:
+                            Console.Clear();
+                            Console.WriteLine("Please put the name of Category you would like to add\nWARNING\nIT WILL ALSO DELETE ALL BOOKS ASSOCIATED WITH THIS CATEGORY");
+                            number=1;
+                            foreach(var Category in CategoriesList)
+                            {
+                                Console.WriteLine("{0}. {1}", number,Category.Name);
+                                number++;
+                            }
+                            string? deletecategory=Console.ReadLine();
+                            if(string.IsNullOrEmpty(deletecategory))
+                            {
+                                deletecategory="";
+                                Console.WriteLine("Empty string dettected, no categories will be deleted. Press Enter to return to Menu");
+                            }
+                            else
+                                myApp.DeleteCategory(deletecategory);
+                            break;
                         default:
                             break;
                     }
                     break;
                 case 3:
-                    myApp.DisplayCatalogueTab();
+                    switch(myApp.DisplayCatalogueTab())
+                    {
+                        case 1:
+                            myApp.DisplayCatalogue();
+                            break;
+                        case 2:
+                            myApp.DeleteCatalogue();
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 4:
                     myApp.DisplayRentalTab();
                     break;
                 case 5:
                     Console.WriteLine("Invoices are going to be implemented soon...");
-                    break;
-                case 6:
-                    Console.WriteLine("Help is going to be implemented soon...");
                     break;
                 case 0:
                     run=myApp.Exit();

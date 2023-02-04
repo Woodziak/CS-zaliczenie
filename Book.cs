@@ -8,6 +8,8 @@ namespace Library
         protected string author="";
         protected int isbn=0;
         protected string category="";
+        protected int serialnumber=0;
+        protected string status="available";
 
         //constructors
         public Book(string title, string author, int ISBN, string category)
@@ -16,7 +18,8 @@ namespace Library
             this.author=author;
             this.isbn=ISBN;
             this.category=category;
-            
+            Random rnd = new Random();
+            this.serialnumber=rnd.Next();
         }
         public Book(){}
 
@@ -41,7 +44,16 @@ namespace Library
             get { return category;  }
             set { category=value;   }
         }
-
+        public int SerialNumber
+        {
+            get { return serialnumber; }
+            set { serialnumber=value; }
+        }
+        public string Status
+        {
+            get { return status; }
+            set { status=value; }
+        }
     }
     public class Dictionary : Book
     {
