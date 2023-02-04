@@ -131,7 +131,7 @@ namespace Library
                         case 2:
                             string? fn;
                             string? ln;
-                            (int, int) id=(0,0);
+                            (int, int, int) id=(0,0,0);
                             Console.Write("Please input your first name: ");
                             fn=Console.ReadLine();
                             if(string.IsNullOrEmpty(fn))
@@ -141,17 +141,21 @@ namespace Library
                             if(string.IsNullOrEmpty(ln))
                                 ln="Doe";
                             id=myApp.RentBook();
-
-                            RentsList.Add(new Rents(fn, ln, id.Item2 ,id.Item1));
+                            if(id.Item1!=0)
+                            {
+                                RentsList.Add(new Rents(fn, ln, id.Item2 ,id.Item1));
+                                InvoicesList.Add(new Invoice(id.Item3));
+                            }
                             break;
                         case 3:
+                            myApp.MakeBookReturned(myApp.ReturnBook());
                             break;
                         default:
                             break;
                     }
                     break;
                 case 5:
-                    Console.WriteLine("Invoices are going to be implemented soon...");
+                    myApp.DisplayInvoice();
                     break;
                 case 0:
                     run=myApp.Exit();

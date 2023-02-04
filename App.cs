@@ -680,24 +680,28 @@ namespace Library
             ViewAllBooks(true);
             Console.WriteLine("Who rented:");
             Console.WriteLine("First Name   Last Name   Book S/N    Rent ID");
+            int number=1;
             foreach(var Rent in Program.RentsList)
             {
-                Console.WriteLine("{0}, {1}, {2}, {3}", 
+                Console.WriteLine("{0}, {1}, {2}, {3}, {4}", 
+                number,
                 Rent.FirstName, 
                 Rent.LastName, 
                 Rent.RentedBook, 
                 Rent.RentID);
+                number++;
                 
             }
-
-            Console.WriteLine("Press enter to return to Main Menu");
+            Console.WriteLine("Press enter to Continue");
             Console.ReadLine();
 
         }
-        public (int,int) RentBook()
+        public (int,int, int) RentBook()
         {   int id=0;
             int sn=0;
+            
             Random rnd=new Random();
+            int invoiceid=rnd.Next();
             Console.Clear();
             Console.WriteLine("Please specify from which type you would like to rent a book: Book, Dictionary, Encyclopedia, Manual, Textbook");
             string? name=Console.ReadLine();
@@ -723,7 +727,7 @@ namespace Library
                                     Book.Status="RENTED";
                                     Console.WriteLine("Book {0} has been rented",Book.Title);
                                     if (Program.RentsList.Count==0)
-                                        id=1;
+                                        id=65000;
                                     else
                                     {
                                         var Rent= Program.RentsList.Last();
@@ -749,7 +753,7 @@ namespace Library
                                     Dictionary.Status="RENTED";
                                     Console.WriteLine("Book {0} has been rented",Dictionary.Title);
                                     if (Program.RentsList.Count==0)
-                                        id=1;
+                                        id=65000;
                                     else
                                     {                                    
                                         var Rent= Program.RentsList.Last();
@@ -775,7 +779,7 @@ namespace Library
                                     Encyclopedia.Status="RENTED";
                                     Console.WriteLine("Book {0} has been rented",Encyclopedia.Title);
                                     if (Program.RentsList.Count==0)
-                                        id=1;
+                                        id=65000;
                                     else
                                     {                            
                                         var Rent= Program.RentsList.Last();
@@ -801,7 +805,7 @@ namespace Library
                                     Manual.Status="RENTED";
                                     Console.WriteLine("Book {0} has been rented",Manual.Title);
                                     if (Program.RentsList.Count==0)
-                                        id=1;
+                                        id=65000;
                                     else
                                     {                                
                                         var Rent= Program.RentsList.Last();
@@ -827,7 +831,7 @@ namespace Library
                                     Textbook.Status="RENTED";
                                     Console.WriteLine("Book {0} has been rented",Textbook.Title);
                                     if (Program.RentsList.Count==0)
-                                        id=1;
+                                        id=65000;
                                     else
                                     {                                    
                                         var Rent= Program.RentsList.Last();
@@ -845,7 +849,69 @@ namespace Library
                         break;
                 }
             }
-            return (id, sn);
+            return (id, sn, invoiceid);
+        }
+        public int ReturnBook()
+        {
+            DisplayRents();
+            Console.WriteLine("Please select which Rent should be ended and Book returned on stock ");
+            int rent=InputVerification();
+            rent--;
+            int bookid=Program.RentsList.ElementAt(rent).RentedBook;
+            Program.RentsList.RemoveAt(rent);
+            Console.WriteLine("Book succesfully returned");
+            return bookid;
+        }
+        public void MakeBookReturned(int id)
+        {
+            foreach( var Book in Program.BooksList)
+            {
+                if ((Book.SerialNumber==id) && (Book.Status=="RENTED"))
+                    Book.Status="AVAILABLE";
+            }
+            foreach( var Dictionary in Program.DictionariesList)
+            {
+                if ((Dictionary.SerialNumber==id) && (Dictionary.Status=="RENTED"))
+                    Dictionary.Status="AVAILABLE";
+            }
+            foreach( var Encyclopedia in Program.EncyclopediasList)
+            {
+                if ((Encyclopedia.SerialNumber==id) && (Encyclopedia.Status=="RENTED"))
+                    Encyclopedia.Status="AVAILABLE";
+            }
+            foreach( var Manual in Program.ManualsList)
+            {
+                if ((Manual.SerialNumber==id) && (Manual.Status=="RENTED"))
+                    Manual.Status="AVAILABLE";
+            }            
+            foreach( var Textbook in Program.TextbooksList)
+            {
+                if ((Textbook.SerialNumber==id) && (Textbook.Status=="RENTED"))
+                    Textbook.Status="AVAILABLE";
+            }            
+        }
+        public void DisplayInvoice()
+        {
+            Console.Clear();
+            Console.WriteLine("Invoices registered in system:");
+            if(Program.InvoicesList.Count>0)
+            {   int number=1;
+                Console.WriteLine("No   InvoiceID   Fee     Invoice Type ");
+                foreach(var Invoice in Program.InvoicesList)
+                {
+                    Console.WriteLine("{0}, {1}, {2}, {3}, ",
+                    number,
+                    Invoice.InvoiceID,
+                    Invoice.Fee,
+                    Invoice.InvoiceType
+                    );
+                }
+                Console.WriteLine("Press Enter to return to main menu");
+                Console.ReadLine();
+            }
+            else
+                Console.WriteLine("No invoices in system");
+
         }
         public bool Exit()
         {
